@@ -11,13 +11,13 @@ export default function Home() {
 
       {/* BACKGROUND */}
       <div className="absolute inset-0">
-        <Image
+        {/* <Image
           src="/barber-bg.jpg"
           alt="Barbershop"
           fill
           className="object-cover opacity-40"
           priority
-        />
+        /> */}
 
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/80 to-black/90 backdrop-blur-[2px]" />
