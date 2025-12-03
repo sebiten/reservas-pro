@@ -3,11 +3,13 @@ import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/server";
 import NavBarClient from "./NavBarClient";
 import { signOutAction } from "@/app/actions";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export default async function NavBar() {
     const supabase = await createClient();
     const { data } = await supabase.auth.getUser();
-
+   
     const user = data.user;
     const email = user?.email;
     const name = email?.split("@")[0] ?? "Usuario";

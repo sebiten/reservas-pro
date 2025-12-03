@@ -73,6 +73,20 @@ export default function Home() {
             size="lg"
             className="px-10 py-6 text-lg rounded-2xl bg-blue-600 hover:bg-blue-700 shadow-2xl shadow-blue-600/30 transition-all"
           >
+            <Link href="/admin/reservas">admin/reservas</Link>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            className="px-10 py-6 text-lg rounded-2xl bg-blue-600 hover:bg-blue-700 shadow-2xl shadow-blue-600/30 transition-all"
+          >
+            <Link href="/admin/usuarios">Admin usuarios</Link>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            className="px-10 py-6 text-lg rounded-2xl bg-blue-600 hover:bg-blue-700 shadow-2xl shadow-blue-600/30 transition-all"
+          >
             <Link href="/reservar">Reservar ahora</Link>
           </Button>
         </motion.div>

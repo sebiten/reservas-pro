@@ -41,11 +41,40 @@ export async function updateSession(request: NextRequest) {
   if (
     !user &&
     !request.nextUrl.pathname.startsWith('/login') &&
-    !request.nextUrl.pathname.startsWith('/auth')
+    !request.nextUrl.pathname.startsWith('/auth') 
   ) {
     // no user, potentially respond by redirecting the user to the login page
     const url = request.nextUrl.clone()
     url.pathname = '/auth/login'
+    return NextResponse.redirect(url)
+  }
+  const { data: users } = await supabase.auth.getUser();
+
+
+  const { data: role, error: profileErr } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", users.user?.id)
+    .single();
+
+  // Now you can use the `user` object to protect routes, etc.
+  // protect /admin/reservas route
+  if (
+    request.nextUrl.pathname.startsWith('/admin/reservas') &&
+    role?.role !== 'admin' && role?.role !== 'barbero'
+  ) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/'
+    return NextResponse.redirect(url)
+  }
+
+  // protect /admin/usuarios route
+  if (
+    request.nextUrl.pathname.startsWith('/admin/usuarios') &&
+    role?.role !== 'admin'
+  ) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/'
     return NextResponse.redirect(url)
   }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,7 +15,8 @@ export default function NavBarClient({
     role: string | null;
 }) {
     const [open, setOpen] = useState(false);
-
+    // reload 
+  
     return (
         <>
             {/* Toggle Button */}
