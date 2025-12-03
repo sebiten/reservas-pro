@@ -40,8 +40,8 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
 
       if (error) throw error;
 
-      router.push("/"); // 🔥 redirección correcta
       router.refresh();
+      router.push("/"); // 🔥 redirección correcta
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred");
     } finally {
