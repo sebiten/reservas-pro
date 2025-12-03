@@ -25,8 +25,6 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
   const router = useRouter();
   const params = useSearchParams();
 
-  // 🔥 Si viene desde /sign-in?redirectTo=/booking/pay...
-  const redirectTo = params.get("redirectTo") || "/";
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,7 +40,7 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
 
       if (error) throw error;
 
-      router.push(redirectTo); // 🔥 redirección correcta
+      router.push("/"); // 🔥 redirección correcta
       router.refresh();
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred");
