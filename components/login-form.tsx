@@ -102,7 +102,7 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?{" "}
               <Link
-                href={`/auth/sign-up?redirectTo=${redirectTo}`}
+                href={`/auth/sign-up`}
                 className="underline underline-offset-4"
               >
                 Sign up
